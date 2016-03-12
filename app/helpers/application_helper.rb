@@ -23,4 +23,20 @@ module ApplicationHelper
       end
     end.join(' ').html_safe
   end
+  
+  def publication_badge(page)
+    if page.published?
+      [
+        content_tag(:span, 'published', class: 'label label-primary'),
+        'on',
+        page.published_on.strftime('%F')
+      ]
+    else
+      [
+        content_tag(:span, 'draft', class: 'label label-default'),
+        'to be published on',
+        page.published_on.strftime('%F')
+      ]
+    end.join(' ').html_safe
+  end
 end

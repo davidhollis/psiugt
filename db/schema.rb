@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312184204) do
+ActiveRecord::Schema.define(version: 20160312213424) do
 
   create_table "casein_admin_users", force: :cascade do |t|
     t.string   "login",                           null: false
@@ -53,5 +53,18 @@ ActiveRecord::Schema.define(version: 20160312184204) do
 
   add_index "members", ["big_brother_id"], name: "index_members_on_big_brother_id"
   add_index "members", ["initiation_class_id"], name: "index_members_on_initiation_class_id"
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "title"
+    t.string   "slug",         null: false
+    t.datetime "published_on"
+    t.text     "body"
+    t.text     "sidebar"
+    t.integer  "parent_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "pages", ["parent_id"], name: "index_pages_on_parent_id"
 
 end
