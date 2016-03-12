@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312182800) do
+ActiveRecord::Schema.define(version: 20160312184204) do
 
   create_table "casein_admin_users", force: :cascade do |t|
     t.string   "login",                           null: false
@@ -34,5 +34,24 @@ ActiveRecord::Schema.define(version: 20160312182800) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "initiation_classes", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "status"
+    t.integer  "initiation_class_id"
+    t.integer  "big_brother_id"
+    t.string   "member_attributes"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "members", ["big_brother_id"], name: "index_members_on_big_brother_id"
+  add_index "members", ["initiation_class_id"], name: "index_members_on_initiation_class_id"
 
 end
