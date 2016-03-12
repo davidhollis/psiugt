@@ -4,4 +4,8 @@ class Member < ActiveRecord::Base
   has_many :little_brothers, class_name: 'Member', inverse_of: :big_brother
   
   enum status: %i(active candidate alum withdrawn)
+  
+  scope :biggable, -> { where.not(status: statuses['candidate']).order(:name) }
+  
+  ATTRIBUTES = %w(founder honorary dabes)
 end

@@ -59,7 +59,9 @@ module Casein
     private
       
       def member_params
-        params.require(:member).permit(:name, :status, :initiation_class, :big_brother, :member_attributes)
+        base_params = params.require(:member).permit(:name, :status, :initiation_class_id, :big_brother_id)
+        base_params[:member_attributes] = (params[:member_attributes]&.join(' ') || '')
+        base_params
       end
 
   end

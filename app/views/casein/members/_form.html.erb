@@ -2,28 +2,25 @@
 
 
 <div class="row">
-	<div class="col-lg-6">
+	<div class="col-lg-12">
 		<%= casein_text_field f, f.object, :name %>
 	</div>
-	<div class="col-lg-6">
-		<%= casein_text_field f, f.object, :status %>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+		<%= casein_collection_select f, f.object, :member, :big_brother_id, Member.biggable.all, :id, :name, include_blank: '(no big brother)' %>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-lg-6">
-		<%= casein_text_field f, f.object, :initiation_class %>
+	<div class="col-lg-4">
+		<%= casein_select f, f.object, :status, options_for_select(Member.statuses.keys, f.object.status) %>
 	</div>
-	<div class="col-lg-6">
-		<%= casein_text_field f, f.object, :big_brother %>
+	<div class="col-lg-4">
+		<%= casein_collection_select f, f.object, :member, :initiation_class_id, InitiationClass.all, :id, :name %>
 	</div>
-</div>
-
-<div class="row">
-	<div class="col-lg-6">
-		<%= casein_text_field f, f.object, :member_attributes %>
-	</div>
-	<div class="col-lg-6">
-		
+	<div class="col-lg-4">
+		<%= casein_custom_field f, f.object, :member_attributes, member_attribute_check_boxes(f.object) %>
 	</div>
 </div>
