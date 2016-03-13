@@ -5,7 +5,7 @@
 //= require summernote
 
 $(document).ready(function () {
-    $.ajax('/casein/pages.json', {
+    $.ajax('/casein/pages/titles.json', {
         dataType: 'json'
     }).then(function (data) {
         window.pagePaths = data;

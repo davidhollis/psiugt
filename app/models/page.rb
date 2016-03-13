@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
   belongs_to :parent, class_name: 'Page'
-  has_many :children, class_name: 'Page', inverse_of: :parent
+  has_many :children, class_name: 'Page', foreign_key: :parent_id
   
   scope :roots, -> { where(parent: nil) }
   

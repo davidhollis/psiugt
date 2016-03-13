@@ -6,7 +6,9 @@ Rails.application.routes.draw do
       post :move, on: :member
     end
 		resources :posts
-		resources :pages
+		resources :pages do
+      get :titles, on: :collection, format: :json
+    end
 		resources :members
 		resources :initiation_classes
 	end
