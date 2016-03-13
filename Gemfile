@@ -30,6 +30,9 @@ gem 'unicorn'
 # Casein content manager
 gem 'casein', '~>5.1.1'
 
+# Summernote rich text editor
+gem 'summernote-rails', '~> 0.6'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
