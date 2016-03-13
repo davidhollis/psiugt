@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 	#Casein routes
 	namespace :casein do
+		resources :posts
 		resources :pages
 		resources :members
 		resources :initiation_classes

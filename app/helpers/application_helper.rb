@@ -40,11 +40,19 @@ module ApplicationHelper
     end.join(' ').html_safe
   end
   
+  def post_status_badge(post)
+    if post.published?
+      content_tag(:span, 'published', class: 'label label-primary')
+    else
+      content_tag(:span, 'draft', class: 'label label-default')
+    end
+  end
+  
   def summernote_field(form, attribute)
     form_element_id = "#{attribute}_backing_value"
     [
       form.hidden_field(attribute, id: form_element_id),
-      content_tag(:div, form.object.send(attribute).html_safe, class: 'summernote', data: { backing_value: form_element_id })
+      content_tag(:div, form.object.send(attribute)&.html_safe, class: 'summernote', data: { backing_value: form_element_id })
     ].join.html_safe
   end
 end
