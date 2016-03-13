@@ -32,6 +32,7 @@ gem 'casein', '~>5.1.1'
 
 # Summernote rich text editor
 gem 'summernote-rails', '~> 0.6'
+gem 'codemirror-rails'
 
 # For strict ordering of menu items
 gem 'acts_as_list'

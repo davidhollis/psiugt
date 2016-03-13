@@ -10,6 +10,16 @@ module Casein
     def index
       @casein_page_title = 'Pages'
   		@pages = Page.order(sort_order(:title)).paginate :page => params[:page]
+      
+      respond_to do |format|
+        format.html
+        format.json { render json:
+          @pages.map { |page| {
+            title: page.title,
+            path: page.path
+          }}
+        }
+      end
     end
   
     def show
