@@ -40,7 +40,7 @@ module ApplicationHelper
     end.join(' ').html_safe
   end
   
-  def post_status_badge(post)
+  def publication_status_badge(post)
     if post.published?
       content_tag(:span, 'published', class: 'label label-primary')
     else

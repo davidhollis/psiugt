@@ -60,7 +60,7 @@ module Casein
     private
       
       def page_params
-        base_params = params.require(:page).permit(:title, :slug, :published_on, :body, :sidebar, :parent_id)
+        base_params = params.require(:page).permit(:title, :slug, :published, :body, :sidebar, :parent_id)
       end
 
   end

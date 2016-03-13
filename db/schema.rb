@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313021151) do
+ActiveRecord::Schema.define(version: 20160313024750) do
 
   create_table "casein_admin_users", force: :cascade do |t|
     t.string   "login",                           null: false
@@ -65,13 +65,13 @@ ActiveRecord::Schema.define(version: 20160313021151) do
 
   create_table "pages", force: :cascade do |t|
     t.string   "title"
-    t.string   "slug",         null: false
-    t.datetime "published_on"
+    t.string   "slug",       null: false
     t.text     "body"
     t.text     "sidebar"
     t.integer  "parent_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "published"
   end
 
   add_index "pages", ["parent_id"], name: "index_pages_on_parent_id"

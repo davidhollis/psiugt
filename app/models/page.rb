@@ -10,10 +10,6 @@ class Page < ActiveRecord::Base
     format: { with: /\A[a-z0-9-]+\Z/, message: 'must consist entirely of lower-case letters, numbers, and hyphens (-)' },
     exclusion: { in: %w(admin casein posts), message: '%{value} is a reserved slug' }
   
-  def published?
-    published_on and published_on <= Time.now
-  end
-  
   def path
     "#{parent&.path}/#{slug}"
   end
