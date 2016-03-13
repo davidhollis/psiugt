@@ -4,6 +4,11 @@
 @import "codemirror";
 @import "summernote";
 
+.navbar-brand>img {
+    width: 210px;
+    height: 45px;
+}
+
 td.action {
     width: 30px;
 }
