@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
 	#Casein routes
 	namespace :casein do
+		resources :menu_items do
+      post :move, on: :member
+    end
 		resources :posts
 		resources :pages
 		resources :members

@@ -11,5 +11,6 @@
 <%= content_for :sidebar do %>
 
 	<li><%= link_to "#{casein_show_icon "plus-sign"}Add a new page".html_safe, new_casein_page_path %></li>
+    <li><%= link_to "#{casein_show_icon "th-list"}Manage site menu".html_safe, casein_menu_items_path %></li>
 
 <% end %>
