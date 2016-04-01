@@ -59,7 +59,7 @@ module ApplicationHelper
           content_tag(:td, casein_table_cell_link(publication_status_badge(page), casein_page_path(page))),
           content_tag(:td, casein_table_cell_link((page.parent&.title || '(root page)'), casein_page_path(page))),
           content_tag(:td,
-            link_to(casein_show_row_icon("new-window"), casein_page_path(page)),
+            link_to(casein_show_row_icon("new-window"), page.path, target: '_blank'),
             class: 'action'
           ),
           content_tag(:td,
