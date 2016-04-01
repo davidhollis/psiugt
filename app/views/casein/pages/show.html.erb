@@ -2,6 +2,23 @@
 
 <h2>View page</h2>
 
+<% if @page.id == @home_page.id %>
+<div class="alert alert-info">
+    <h4>Home Page</h4>
+    <p>As long as this page is published, its body will be shown above the news
+        section on the home page and its sidebar content will be shown on every
+        page.</p>
+</div>
+<% end %>
+<% if @page.id == Page.not_found.id %>
+<div class="alert alert-info">
+    <h4>404 Page</h4>
+    <p>As long as this page is published, its body will be shown whenever a
+        viewer attempts to view a page or post that either doesn't exist or
+        hasn't been published.</p>
+</div>
+<% end %>
+
 <%= form_for @page, :url => casein_page_path(@page) do |f| %>
 
 	<%= render :partial => 'casein/pages/form', :locals => { :f => f } %>
