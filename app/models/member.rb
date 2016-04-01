@@ -7,5 +7,5 @@ class Member < ActiveRecord::Base
   
   scope :biggable, -> { where.not(status: statuses['candidate']).order(:name) }
   
-  ATTRIBUTES = %w(founder honorary dabes)
+  ATTRIBUTES = %w(founder honorary)
 end
