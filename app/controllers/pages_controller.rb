@@ -15,18 +15,13 @@ class PagesController < ApplicationController
       end
     end
     
-    # If we found a page, but it wasn't published, fall back to /404
-    unless page.published?
-      page = Page.not_found
-    end
-    
     if page.published?
       # Extract the body text
+      @title = page.title
       @body = page.body
     else
-      # If the page still isn't published, then the custom 404 page is not
-      # published.
-      @body = Page::FALLBACK_PAGE_BODY
+      # If the page isn't published, then it wasn't found
+      @title, @body = page_not_found
     end
     
     # Walk up the page hierarchy until we find a sidebar
@@ -48,7 +43,5 @@ class PagesController < ApplicationController
     # Ensure that we can display both the body and sidebar
     @body = @body.to_s.html_safe
     @sidebar = @sidebar.to_s.html_safe
-    
-    @menu_items = MenuItem.all
   end
 end

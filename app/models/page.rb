@@ -30,11 +30,12 @@ class Page < ActiveRecord::Base
     def not_found
       roots.find_or_create_by(slug: '404') do |page|
         page.published = false
-        page.title = 'Page Not Found'
+        page.title = FALLBACK_PAGE_TITLE
         page.body = FALLBACK_PAGE_BODY
       end
     end
   end
   
   FALLBACK_PAGE_BODY = "<h2>Page not found</h2><p>The page you were looking for couldn't be found.</p>"
+  FALLBACK_PAGE_TITLE = "Page Not Found"
 end
