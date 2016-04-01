@@ -1,0 +1,12 @@
+<% if @head_copy %>
+<%= @head_copy %>
+<hr>
+<% end %>
+<h1>PsiNews</h1>
+<% @posts.each do |post| %>
+    <h2><%= link_to post.title, post %></h2>
+    <p class="pubtime">Posted <%= post.created_at.strftime('%F %T %Z') %></p>
+    <%= post.body.html_safe %>
+    <hr>
+<% end %>
+<%= will_paginate @posts %>

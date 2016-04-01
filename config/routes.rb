@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :posts, only: %i(index show)
+
 	#Casein routes
 	namespace :casein do
 		resources :menu_items do
@@ -14,5 +16,5 @@ Rails.application.routes.draw do
 	end
 
   get '*path', controller: :pages, action: :show
-  root controller: :pages, action: :show
+  root controller: :posts, action: :index
 end

@@ -37,6 +37,9 @@ gem 'codemirror-rails'
 # For strict ordering of menu items
 gem 'acts_as_list'
 
+# Pagination!
+gem 'will_paginate'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
