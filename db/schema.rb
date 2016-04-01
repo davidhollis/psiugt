@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313024750) do
+ActiveRecord::Schema.define(version: 20160401155038) do
 
   create_table "casein_admin_users", force: :cascade do |t|
     t.string   "login",                           null: false
@@ -80,6 +80,14 @@ ActiveRecord::Schema.define(version: 20160313024750) do
     t.string   "title"
     t.text     "body"
     t.boolean  "published"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "remote_files", force: :cascade do |t|
+    t.integer  "role"
+    t.string   "url"
+    t.string   "s3_key"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

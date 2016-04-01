@@ -40,6 +40,9 @@ gem 'acts_as_list'
 # Pagination!
 gem 'will_paginate'
 
+# For S3
+gem 'aws-sdk', '~> 2'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -69,6 +69,20 @@ module Casein
       flash[:notice] = 'Page has been deleted'
       redirect_to casein_pages_path
     end
+    
+    def image_upload
+      image_io = params[:image]
+      image_file_extension = image_io.original_filename.split(/\./).last
+      s3_file = RemoteFile.create_from io: image_io,
+        role: :image,
+        suffix: ".#{image_file_extension}"
+      
+      respond_to do |format|
+        format.json { render json: {
+          image_url: s3_file.url
+        }}
+      end
+    end
   
     private
       

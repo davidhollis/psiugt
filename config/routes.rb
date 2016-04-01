@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 		resources :posts
 		resources :pages do
       get :titles, on: :collection, format: :json
+      post :image_upload, on: :collection, format: :json
     end
 		resources :members
 		resources :initiation_classes

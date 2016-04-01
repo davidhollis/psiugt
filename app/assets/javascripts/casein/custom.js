@@ -11,6 +11,23 @@ $(document).ready(function () {
         window.pagePaths = data;
     });
     
+    function sendFile(file, callback) {
+        var data = new FormData();
+        data.append("image", file);
+        $.ajax({
+            url: '/casein/pages/image_upload.json',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            dataType: 'json',
+            success: function (response) {
+                callback(response['image_url']);
+            }
+        });
+    }
+    
     $('.summernote').summernote({
         toolbar: [
             ['textstyle', ['bold', 'italic', 'underline', 'strikethrough']],
@@ -23,6 +40,16 @@ $(document).ready(function () {
             onBlur: function () {
                 var field = $(this);
                 $('#' + field.data('backing-value')).val(field.summernote('code'));
+            },
+            onImageUpload: function (images, editor) {
+                var i = 0,
+                    field = $(this);
+                
+                for (i = 0; i < images.length; ++i) {
+                    sendFile(images[i], function(imageUrl) {
+                        field.summernote('insertImage', imageUrl);
+                    });
+                }
             }
         },
         hint: {
