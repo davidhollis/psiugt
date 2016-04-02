@@ -43,6 +43,9 @@ gem 'will_paginate'
 # For S3
 gem 'aws-sdk', '~> 2'
 
+# For rendering the graph
+gem 'ruby-graphviz', require: 'graphviz'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

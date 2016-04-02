@@ -55,6 +55,15 @@ module Casein
       flash[:notice] = 'Member has been deleted'
       redirect_to casein_members_path
     end
+    
+    def render_chart
+      genealogy_file =
+        RemoteFile.create_from_temp_file(role: :genealogy, suffix: '.pdf') do |temp_file|
+          Member.output_graph(temp_file.path)
+        end
+      
+      redirect_to genealogy_file.url
+    end
   
     private
       
